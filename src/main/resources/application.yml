@@ -1,0 +1,34 @@
+server:
+  port: 8005
+
+management:
+  endpoint:
+    health:
+      show-details: always
+    shutdown:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+spring:
+  application:
+    name: consul-demo-service
+  # 配置consul服务注册与发现
+  cloud:
+    consul:
+      host: 192.168.75.134
+      port: 8500
+      discovery: ${spring.application.name}
+  datasource:
+    dynamic:
+      primary: test
+      druid:
+        max-wait: 10
+      datasource:
+        test:
+          url: jdbc:mysql://192.168.75.134:3306/test?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&serverTimezone=Asia/Shanghai
+          username: root
+          password: 123456
+          driver-class-name: com.mysql.cj.jdbc.Driver
