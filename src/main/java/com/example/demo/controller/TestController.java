@@ -14,6 +14,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+// 导入了全局参数
+import static com.example.demo.service.IKwaiApi.BAIDU_URL;
+
 /**
  * @program: demo
  * @description: 测试使用
@@ -43,7 +46,12 @@ public class TestController {
 
     @GetMapping("/enum")
     @ResponseBody
-    public Map getEnums(){
+    public Map getEnums() {
         return TencentApiCostTypeEnums.getMap();
+    }
+
+    @GetMapping("/url")
+    public String getUrl() {
+        return BAIDU_URL;
     }
 }
